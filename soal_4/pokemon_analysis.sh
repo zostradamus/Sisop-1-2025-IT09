@@ -71,7 +71,7 @@ if [[ "$2" == "--filter" ]]; then
     fi 
     TYPE="$3"
     echo "Pokemon,Usage%,RawUsage,Type1,Type2,HP,Atk,Def,SpAtk,SpDef,Speed"
-    awk -F',' -v type="$TYPE" 'NR>1 || tolower($4) == tolower(type) || tolower($5) == tolower(type)' "$FILE" | sort -t',' -k2,2nr
+    awk -F',' -v type="$TYPE" 'NR>1 && tolower($4) == tolower(type) || tolower($5) == tolower(type)' "$FILE" | sort -t',' -k2,2nr
     exit 0
 fi 
 
