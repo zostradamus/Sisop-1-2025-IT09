@@ -1,4 +1,10 @@
-awk -F ',' '$2 == "Chris Hemsworth" {count++} END {print "Chris Hemsworth membaca", count, "buku."}' reading_>                                                                                                                  # Output untuk Soal 2                                                                                         awk -F ',' '$8 == "Tablet" {total += $6; count++} END {if (count > 0) print "Rata-rata durasi membaca den>    # Output untuk Soal 3                                                                                         awk -F ',' 'NR == 1 {next} {if ($7 > max) {max = $7; name = $2; title = $3}} END {print "Pembaca dengan r>    # Output untuk Soal 4
+awk -F ',' '$2 == "Chris Hemsworth" {count++} END {print "Chris Hemsworth membaca", count, "buku."}' reading_data.csv
+
+    # Output untuk Soal 2
+    awk -F ',' '$8 == "Tablet" {total += $6; count++} END {if (count > 0) print "Rata-rata durasi membaca dengan Tablet adalah", total / count, "menit."; else print "Tidak ada data untuk Tablet."}' reading_data.csv
+    # Output untuk Soal 3
+    awk -F ',' 'NR == 1 {next} {if ($7 > max) {max = $7; name = $2; title = $3}} END {print "Pembaca dengan rating tertinggi:", name, "-", title, "-", max}' reading_data.csv
+    # Output untuk Soal 4
     awk -F',' '
 NR > 1 {
     # Ambil data sesuai kolom yang benar
@@ -15,7 +21,7 @@ NR > 1 {
 END {
     max = 0
     populer = "Tidak ada data"
-    
+
     # Loop untuk mencari genre terbanyak
     for (g in genre_count) {
         if (genre_count[g] > max) {
@@ -31,3 +37,5 @@ END {
         print "Tidak ada data yang cocok untuk Asia setelah 2023.";
     }
 }' reading_data.csv
+
+
