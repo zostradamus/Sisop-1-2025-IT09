@@ -4,7 +4,7 @@
 | Nama                           | NRP        |
 | -------------------------------| ---------- |
 | Shinta Alya Ramadani           | 5027241016 |
-|  | 50272410 |
+| Prabaswara Febrian Winandika   | 5027241069 |
 | Muhammad Farrel Rafli Al Fasya | 5027241075 |
 ### SOAL 1
 SOON
