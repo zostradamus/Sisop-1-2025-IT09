@@ -133,4 +133,5 @@ fi
 ```
 Skrip ini membaca argumen input untuk mengeksekusi fungsi yang sesuai dengan perintah --play="<Track>".
 ### SOAL 4
-SOON
+#### Analisis Soal
+Soal ini 
