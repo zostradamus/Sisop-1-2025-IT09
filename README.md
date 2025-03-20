@@ -171,7 +171,7 @@ Login gagal! Email atau password salah.
 [2025-03-15 23:29:01] - Fragment Usage [17.06%] - Fragment Count [654 MB] - Details [Total: 3838 MB, Available: 3183 MB]
 ```
 
-### 6. **Terminal Interaktif (terminal.sh)**
+### 4. **Terminal Interaktif (terminal.sh)**
 **Tujuan:**
 - Menyediakan antarmuka menu untuk menjalankan:
   1. Registrasi pengguna (`register.sh`).
@@ -211,6 +211,7 @@ Pilih menu: 1
 
 ---
 Dibuat untuk sistem manajemen pengguna dan monitoring server dengan Bash.
+
 
 ### SOAL 3
 #### Analisis Soal
