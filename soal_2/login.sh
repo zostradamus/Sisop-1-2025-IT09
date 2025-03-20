@@ -18,3 +18,4 @@ if grep -q "^$email,.*,$hashed_input$" "$DB_FILE"; then
 else
     echo "Login gagal! Email atau password salah."
 fi
+
