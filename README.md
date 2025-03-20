@@ -7,10 +7,10 @@
 |  | 50272410 |
 | Muhammad Farrel Rafli Al Fasya | 5027241075 |
 ### SOAL 1
-#### SOON
+SOON
 ### SOAL 2
-#### SOON
+SOON
 ### SOAL 3
-#### SOON
+SOON
 ### SOAL 4
-#### SOON
+SOON
