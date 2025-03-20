@@ -29,6 +29,9 @@ speak_to_me() {
 }
 ```
 Fungsi ini menampilkan afirmasi positif dari API eksternal (https://www.affirmations.dev) setiap detik dengan menggunakan curl dan memprosesnya dengan jq.
+Output :
+![image](https://github.com/user-attachments/assets/2afaf298-bb7d-481b-a9fb-bb1ec43e20c5)
+
 ##### Fungsi on_the_run
 ```sh
 on_the_run() {
@@ -37,7 +40,10 @@ on_the_run() {
     local bar_size=$((term_width - 15))
 ```
 Fungsi ini menampilkan progress bar animasi dengan nilai progres yang diperbarui secara acak.
-###### time_display
+Output :
+![image](https://github.com/user-attachments/assets/92499869-c0f3-421f-bd96-ec1b0224d227)
+
+###### Fungsi time_display
 ```sh
 time_display() {
     while true; do
@@ -55,6 +61,9 @@ time_display() {
 }
 ```
 Fungsi ini menampilkan waktu real-time dan menggunakan figlet atau toilet untuk mempercantik tampilan.
+Output :
+![image](https://github.com/user-attachments/assets/a35bce88-ab14-47a5-98dc-7f70f26a4f33)
+
 ###### Fungsi money_display
 ```sh
 money_display() {
@@ -78,6 +87,9 @@ money_display() {
 }
 ```
 Fungsi ini membuat efek "hujan" simbol mata uang di terminal dengan warna hijau.
+Output :
+![image](https://github.com/user-attachments/assets/5a376d35-b30a-4a47-82f7-a13302a50c0b)
+
 ##### Fungsi brain_damage
 ```sh
 brain_damage() {
@@ -99,6 +111,9 @@ brain_damage() {
 }
 ```
 Fungsi ini berfungsi sebagai task manager sederhana, menampilkan daftar proses dengan penggunaan CPU tertinggi.
+Output :
+![image](https://github.com/user-attachments/assets/48a811cf-4fcb-40c9-b235-fc9d8c441ec1)
+
 ##### Pemrosesan Argumen Input
 ```sh
 if [[ "$1" == "--play="* ]]; then
