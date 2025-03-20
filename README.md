@@ -11,7 +11,7 @@ SOON
 ### SOAL 2
 SOON
 ### SOAL 3
-#### Analisi Soal
+#### Analisis Soal
 Dalam membuat soal ini, skrip dibuat menggunakan beberapa perintah sistem seperti curl, jq, figlet, toilet, dan ps untuk menampilkan informasi dan efek visual dalam terminal sesuai kebutuhan dari tiap-tiap sub-soal.
 #### Analisis Kode
 ##### Pembersihan Layar Awal
