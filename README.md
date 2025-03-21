@@ -350,26 +350,26 @@ Command dasar yang digunakan meliputi:
 1. awk: untuk manipulasi dan  pencarian data dalam format CSV.
 2. sort: Untuk mengurutkan data berdasarkan kriteria tertentu.
 3. case dan if: Untuk menangani argumen yang diberikan pengguna.
-#### Analisis Code
-##### 1. Mengunduh file pokemon_usage.csv dalam satu direktori dengan program analisis yang akan dibuat (pokemon_analysis.sh).
+**#### Analisis Code**
+**##### 1. Mengunduh file pokemon_usage.csv dalam satu direktori dengan program analisis yang akan dibuat (pokemon_analysis.sh).**
 ```sh
 wget "<link file>" O-pokemon_usage.csv
 ```
-##### 2. Membuat file script dan memberi permission untuk execute
-**Membuat file script baru**
+**##### 2. Membuat file script dan memberi permission untuk execute**
+Membuat file script baru
 ```sh
 touch Ubah permission menjadi execute menggunakan perintah sudo +x namafile
 ```
-**Menambahkan permission untuk exeute**
+Menambahkan permission untuk exeute
 ```sh
 sudo chmod +x pokemon_analysis.sh
 ```
-**Mulai mengedit file**
+Mulai mengedit file
 ```sh
 nano pokemon_analysis.sh
 ```
-##### 3. Mulai mngedit file
-**Awali script pertama dengan hashbang**
+**##### 3. Mulai mngedit file**
+Awali script pertama dengan hashbang
 Digunakan di awal skrip Bash untuk menunjukkan bahwa skrip tersebut harus dijalankan menggunakan interpreter Bash
 ```sh
 #!/bin/bash
