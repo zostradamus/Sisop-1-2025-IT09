@@ -337,4 +337,61 @@ fi
 Skrip ini membaca argumen input untuk mengeksekusi fungsi yang sesuai dengan perintah --play="<Track>".
 ### SOAL 4
 #### Analisis Soal
-Soal ini 
+Pada suatu hari, pengguna diminta membantu seorang teman dalam mempersiapkan tim Pokemon untuk turnamen “Generation 9 OverUsed 6v6 Singles.” Karena tidak memahami meta turnamen, pengguna mendapatkan data dari informan berupa file pokemon_usage.csv. File ini berisi beberapa informasi penting seperti Nama pokemon, Usage%, Raw Usage, Type 1, Type 2, dan Stat Pokemon (HP, Atk, Def, SpAtk, SpDef, Speed)
+Agar analisis lebih mudah untuk dilakukan, dibuatlah script pokemon_analysis.sh dengan fitur-fitur berikut:
+1. Menampilkan Informasi Pokemon dengan Dominasi Meta Tertinggi (Usage% & Raw Usage).
+2. Mengurutkan Data dalam Kolom Tertentu dengan Descending untuk Attribut yang Berbentuk Angka (Usage%, Raw Usage, HP, Atk, Def, SpAtk, SpDef, Speed) dan Alphabetical untuk yang Berbentuk Huruf (nama).
+3. Mencari Pokemon Berdasarkan Nama
+4. Menyaring Data Berdasarkan Tipe Pokemon (dark, grass, dll)
+5. Error Handling jika Terjadi Kesalahan dalam Penulisan Command untuk Menjalankan Program
+6. Menampilkan Bantuan untuk Panduan Penggunaan Script
+#### Command Dasar
+Command dasar yang digunakan meliputi:
+1. awk: untuk manipulasi dan  pencarian data dalam format CSV.
+2. sort: Untuk mengurutkan data berdasarkan kriteria tertentu.
+3. case dan if: Untuk menangani argumen yang diberikan pengguna.
+#### Analisis Code
+##### 1. Mengunduh file pokemon_usage.csv dalam satu direktori dengan program analisis yang akan dibuat (pokemon_analysis.sh).
+```sh
+wget "<link file>" O-pokemon_usage.csv
+```
+##### 2. Membuat file script dan memberi permission untuk execute
+**Membuat file script baru**
+```sh
+touch Ubah permission menjadi execute menggunakan perintah sudo +x namafile
+```
+**Menambahkan permission untuk exeute**
+```sh
+sudo chmod +x pokemon_analysis.sh
+```
+**Mulai mengedit file**
+```sh
+nano pokemon_analysis.sh
+```
+##### 3. Mulai mngedit file
+**Awali script pertama dengan hashbang**
+Digunakan di awal skrip Bash untuk menunjukkan bahwa skrip tersebut harus dijalankan menggunakan interpreter Bash
+```sh
+#!/bin/bash
+```
+**Soal A**
+Menampilkan Informasi Pokemon dengan Dominasi Meta Tertinggi (--info)
+```sh
+FILE="$1"
+
+if [[ "$2" == "--info" ]]; then
+highest_usage=$(awk -F',' 'NR>1 {gsub("%", "", $2); if($2+0 > max) {max=$2+0; name=$1}} END {print name, max"%"}' "$FILE")
+highest_raw=$(awk -F',' 'NR>1 {if($3+0 > max) {max=$3+0; name=$1}} END {print name, max}' "$FILE")
+
+echo "Pokemon yang paling mendominasi meta saat ini!"
+echo "----------------------------------------------------"
+echo "Peringkat berdasarkan Usage%: $highest_usage"
+echo "Peringkat berdasarkan Raw Usage: $highest_raw"
+exit 0
+fi
+```
+1. Menggunakan awk untuk mencari Pokemon dengan nilai Usage% dan Raw Usage tertinggi.
+2. Kolom dipisahkan dengan , dan karakter % dihapus untuk konversi nilai numerik.
+Output:
+
+   
