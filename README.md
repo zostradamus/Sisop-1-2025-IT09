@@ -390,9 +390,153 @@ echo "Peringkat berdasarkan Raw Usage: $highest_raw"
 exit 0
 fi
 ```
-1. Menggunakan awk untuk mencari Pokemon dengan nilai Usage% dan Raw Usage tertinggi.
-2. Kolom dipisahkan dengan , dan karakter % dihapus untuk konversi nilai numerik.
-3. Output:
+- Menggunakan awk untuk mencari Pokemon dengan nilai Usage% dan Raw Usage tertinggi.
+- Kolom dipisahkan dengan , dan karakter % dihapus untuk konversi nilai numerik.
+- Output:
 ![dokumentasisoala](https://github.com/user-attachments/assets/d7a5bd09-988c-4587-bb03-33e4b01a1665)
-)
+##### Soal B
+###### Mengurutkan Data Berdasarkan Kolom Tertentu (--sort)
+```sh
+if [[ "$2" == "--sort" ]]; then
+    if [[ -z "$3" ]]; then
+        echo "Error: no sort option provided" 
+        echo "Use -h or --help for more information" 
+        exit 1
+    fi
+ COLUMN="$3"
+    case "$COLUMN" in
+        "usage") SORT_COL=2;;
+        "raw") SORT_COL=3;;
+        "name") SORT_COL=1;;
+        "hp") SORT_COL=6;;
+        "atk") SORT_COL=7;;
+        "def") SORT_COL=8;;
+        "spatk") SORT_COL=9;;
+        "spdef") SORT_COL=10;;
+        "speed") SORT_COL=11;;
+        *)
+            echo "Kolom yang diinput tidak valid! Gunakan: usage, raw, name, hp, atk, def, spatk, spdef, speed"
+            exit 1
+            ;;
+    esac
+   
+echo "Pokemon,Usage%,RawUsage,Type1,Type2,HP,Atk,Def,SpAtk,SpDef,Speed"
+    # Sorting dengan kondisi khusus untuk kolom Nama (ascending), lainnya descending
+    if [[ "$COLUMN" == "name" ]]; then
+        sort -t',' -k${SORT_COL},${SORT_COL} "$FILE"
+    else
+        sort -t',' -k${SORT_COL},${SORT_COL}nr "$FILE"
+    fi
+
+    exit 0
+fi
+```
+- Menggunakan sort dengan -k untuk mengurutkan berdasarkan kolom tertentu.
+- Jika kolom yang dipilih adalah "name", sorting dilakukan secara ascending/alphabetical.
+- Kolom numerik diurutkan secara descending.
+- Validasi dilakukan untuk memastikan pengguna memasukkan kolom yang valid.
+- Output:
+![dokumentasisoalb](https://github.com/user-attachments/assets/c5903705-7ca1-4715-8f66-3988afd93f0a)
+##### Soal C
+###### Mencari Pokemon Berdasarkan Nama (--grep)
+```sh
+if [[ "$2" == "--grep" ]]; then
+    if [[ -z "$3" ]]; then
+        echo "Error: no search term provided" 
+        echo "Use -h or --help for more information" 
+        exit 1
+    fi
+    POKEMON_NAME="$3"
+    echo "Pokemon,Usage%,RawUsage,Type1,Type2,HP,Atk,Def,SpAtk,SpDef,Speed"
+    awk -F',' -v name="$POKEMON_NAME" 'NR>1 && tolower($1) ~ tolower(name)' "$FILE" | sort -t',' -k2,2nr
+    exit 0
+fi
+```
+- Menggunakan awk dengan parameter pencarian yang tidak case-sensitive.
+- Menampilkan hasil berdasarkan Usage% tertinggi.
+- Output:
+![dokumentasisoalc](https://github.com/user-attachments/assets/ac307428-3b16-4a41-8258-50a742b7365a)
+##### Soal D
+###### Menyaring Data Berdasarkan Tipe (--filter)
+```sh
+if [[ "$2" == "--filter" ]]; then
+    if [[ -z "$3" ]]; then
+        echo "Error: no search term provided" 
+        echo "Use -h or --help for more information" 
+        exit 1
+    fi 
+    TYPE="$3"
+    echo "Pokemon,Usage%,RawUsage,Type1,Type2,HP,Atk,Def,SpAtk,SpDef,Speed"
+    awk -F',' -v type="$TYPE" 'NR>1 || tolower($4) == tolower(type) || tolower($5) == tolower(type)' "$FILE" | sort -t',' -k2,2nr
+    exit 0
+fi 
+```
+- awk digunakan untuk mencocokkan Type1 atau Type2 dengan input pengguna.
+- Sorting dilakukan berdasarkan Usage% tertinggi.
+- Output:
+![dokumentasisoald](https://github.com/user-attachments/assets/a7b8e141-7c68-4834-b50c-0f137380c1aa)
+##### Soal E
+###### Membuat Error Handling ketika terjadi kesalahan saat memberi opsi dari salah satu fitur
+```sh
+if [[ -z "$3" ]]; then
+        echo "Error: no sort option provided" 
+        echo "Use -h or --help for more information" 
+        exit 1
+    fi
+```
+- Memberi fungsi ini di setiap fitur yang membutuhkan opsi(--sort, --grep, --filter)
+- Output:
+![dokumentasisoale](https://github.com/user-attachments/assets/bff8e4e2-7ad6-4b43-a9d2-0df5636cdf46)
+##### Soal F
+###### Menampilkan Bantuan (--help)
+```sh
+show_help() {
+    cat << "CHARIZARD"
+                   ___====-_  _-====___
+             _--^^^#####//      \\#####^^^--_
+          _-^##########// (    ) \\##########^-_
+         -############//  |\^^/|  \\############-
+       _/############//   (@::@)   \\############\_
+      /#############((     \\//     ))#############\
+     -###############\\    (oo)    //###############-
+    -#################\\  / VV \  //#################-
+   -###################\\/      \//###################-
+  _#/|##########/\######(   /\   )######/\##########|\#_
+ |/ |#/\#/\#/\/  \#/\##\|  (  )  |/##/\#/  \/\#/\#/\#| \|
+|/  V  V  `   V  \#\|\  |  |  |     /|/#/  V   '  V  V  \|  
+    `   `  `      ` / | |  |  |  | | \   '      '  '   '
+                   (  | |  |  |  | |  )
+                  __\ | |  |  |  | | /__
+                    (vvv(VVV)(VVV)vvv)
+ 
+CHARIZARD
+    echo "Panduan Penggunaan"
+    echo "----------------------------------------------------"
+    echo "Usage: $0 <file.csv> <command> [options]"
+    echo ""
+    echo "Commands:"
+    echo "  --info          : Menampilkan Pokemon dengan Usage% dan Raw Usage tertinggi"
+    echo "  --sort <col>    : Mengurutkan data berdasarkan kolom tertentu (usage, raw, name, hp, atk, def, spatk, s>"
+    echo "  --grep <name>   : Mencari Pokemon berdasarkan nama"
+    echo "  --filter <type> : Menampilkan Pokemon berdasarkan tipe"
+    echo "  -h, --help      : Menampilkan help screen ini"
+    exit 0
+}
+
+# Tampilkan help screen jika argumen kedua adalah -h atau --help
+if [[ "$2" == "-h" || "$2" == "--help" ]]; then
+    show_help
+fi
+```
+- Fungsi show_help menampilkan instruksi penggunaan script.
+- Menampilkan list perintah yang tersedia dan penggunaannya.
+- Output:
+![dokumentasisoalf](https://github.com/user-attachments/assets/1805ef4f-4132-40bf-8da3-cfb1c0999a10)
+
+
+
+
+
+
+
    
