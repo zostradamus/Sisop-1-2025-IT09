@@ -532,6 +532,20 @@ fi
 - Menampilkan list perintah yang tersedia dan penggunaannya.
 - Output:
 ![dokumentasisoalf](https://github.com/user-attachments/assets/1805ef4f-4132-40bf-8da3-cfb1c0999a10)
+##### **4. Menjalankan script**
+```sh
+./pokemon_analysis.sh pokemon.usage.csv <(--info, --sort <option>, --grep <option>, --filter <option>, --help)>
+```
+#### Kendala yang dialami selama praktikum
+1. Script tidak bisa dijalankan atau di execute, maka harus menggunakan
+```sh
+sudo chmod +x pokemon_analysis.sh
+```
+2. Sorting tidak berjalan sesuai harapan, dikarenakan error pada proses perhitungan % dalam awk, dapat diatasi dengan
+```sh
+gsub("%", "", $2)
+```
+
 
 
 
