@@ -393,5 +393,6 @@ fi
 1. Menggunakan awk untuk mencari Pokemon dengan nilai Usage% dan Raw Usage tertinggi.
 2. Kolom dipisahkan dengan , dan karakter % dihapus untuk konversi nilai numerik.
 3. Output:
-
+![dokumentasisoala](![WhatsApp Image 2025-03-21 at 12 38 24_82f73b21](https://github.com/user-attachments/assets/d7a5bd09-988c-4587-bb03-33e4b01a1665)
+)
    
